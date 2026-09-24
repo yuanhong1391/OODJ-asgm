@@ -53,6 +53,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         btnReport.addActionListener(this::btnReportActionPerformed);
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,6 +125,13 @@ public class ManagerDashboard extends javax.swing.JFrame {
         reportPage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReportActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        Main main = new Main();
+        main.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
