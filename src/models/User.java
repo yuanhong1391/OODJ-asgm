@@ -42,6 +42,49 @@ public abstract class User {
     
     //abstarct method: convert into single line in txt file
     
+    public abstract String toTxtRecord();
     
+    //get user specific details (password, name and so on)
     
+    public String getID() {
+    return id;
+    }
+    
+    public String getUsername() {
+    return username;}
+    
+    public String getName() {
+    return name;}
+    
+    public String getPassword() {
+    return password;}
+    
+    public String getPhone() {
+    return phone;}
+    
+    public String getEmail() {
+    return email;}
+    
+    public String getRole() {
+    return role;}
+    
+    //set user specific details 
+    
+    public void setID (String id) {
+    this.id = id;}
+    
+    public void setUsername (String username) {
+    this.username = username;}
+    
+    public void setName (String name) {
+    this.name = name;}
+    
+    public void setPhone (String phone) {
+    this.phone = phone;}
+    
+    public void setEmail (String email) {
+    this.email = email;}
+    
+    public void setRole (String role) {
+    this.role = role;}
 }
