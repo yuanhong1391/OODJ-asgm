@@ -1,0 +1,114 @@
+Buildfile: D:\Downloads\OODJ Assignment\build.xml
+
+init:
+
+compile:
+
+test:
+    [javac] Compiling 1 source file to D:\Downloads\OODJ Assignment\build\test-classes
+     [java] PASS Empty data folder requires initial setup
+     [java] PASS Unauthenticated access rejected
+     [java] PASS Short password rejected
+     [java] PASS Second bootstrap rejected
+     [java] PASS Incorrect password rejected
+     [java] PASS Case-insensitive username login
+     [java] PASS Self deletion blocked
+     [java] PASS Self deactivation blocked
+     [java] PASS Service does not expose password hashes
+     [java] PASS Password is not persisted as plaintext
+     [java] PASS Duplicate username is case-insensitively rejected
+     [java] PASS Wrong-role assignment blocked
+     [java] PASS Reassignment replaces the doctor's existing assignment
+     [java] PASS Referenced manager deletion blocked
+     [java] PASS Referenced user role cannot change
+     [java] PASS Bed requires a ward
+     [java] PASS Same-room overlap rejected
+     [java] PASS Doctor double booking rejected across consultation rooms
+     [java] PASS Patient overlap rejected across consultation rooms
+     [java] PASS Adjacent bookings are allowed
+     [java] PASS Reversed time range rejected
+     [java] PASS Malformed date rejected
+     [java] PASS Inpatient stay can overlap a consultation
+     [java] PASS Ward maintenance blocked while a bed is allocated
+     [java] PASS Asset deletion preserves allocation history
+     [java] PASS Text escaping round-trips tabs, newlines and backslashes
+     [java] PASS Scheduling derives SCHEDULED request status
+     [java] PASS Duplicate scheduling rejected even at a different time
+     [java] PASS Request cannot complete before its allocation
+     [java] PASS Request completion follows allocation completion
+     [java] PASS Closed request cannot be edited
+     [java] PASS Request history cannot be deleted
+     [java] PASS Currency stored with two decimals
+     [java] PASS Negative rate rejected
+     [java] PASS Excess currency precision rejected
+     [java] PASS Duplicate insurance network rejected
+     [java] PASS Unreferenced user can be deleted
+     [java] PASS Writes blocked after logout
+     [java] PASS Doctor cannot access admin listing
+     [java] PASS Doctor request API feeds admin queue
+     [java] PASS Request rejects a facility of the wrong type
+     [java] PASS Request rejects a mismatched patient
+     [java] PASS Request cancellation requires booked allocation cancellation first
+     [java] PASS Cancelling allocation returns request to OPEN
+     [java] PASS Cancelled allocation permits rescheduling and preserves history
+     [java] PASS Request cancels after allocations are cancelled
+     [java] PASS Concurrent application cannot own the same data folder
+     [java] PASS Records survive close and reopen
+     [java] PASS Corrupt file rejected without data reset
+     [java] PASS Corrupt source is preserved for recovery
+     [java] PASS LoginForm label fits: Username
+     [java] PASS LoginForm label fits: Password
+     [java] PASS LoginForm fields initialise
+     [java] PASS SetupForm label fits: Your full name
+     [java] PASS SetupForm label fits: Admin username
+     [java] PASS SetupForm label fits: Password (at least 8 characters)
+     [java] PASS SetupForm label fits: Confirm password
+     [java] PASS SetupForm fields initialise
+     [java] PASS UserForm label fits: Full name *
+     [java] PASS UserForm label fits: Username *
+     [java] PASS UserForm label fits: Role *
+     [java] PASS UserForm label fits: Password (blank keeps existing)
+     [java] PASS UserForm label fits: Email
+     [java] PASS UserForm label fits: Phone
+     [java] PASS UserForm label fits: Active *
+     [java] PASS UserForm fields initialise
+     [java] PASS AssignmentForm label fits: Doctor *
+     [java] PASS AssignmentForm label fits: Medical manager *
+     [java] PASS AssignmentForm fields initialise
+     [java] PASS AssetForm label fits: Asset name *
+     [java] PASS AssetForm label fits: Asset type *
+     [java] PASS AssetForm label fits: Parent ward (beds only)
+     [java] PASS AssetForm label fits: Availability *
+     [java] PASS AssetForm fields initialise
+     [java] PASS AllocationForm label fits: Facility or bed *
+     [java] PASS AllocationForm label fits: Patient *
+     [java] PASS AllocationForm label fits: Doctor (required for consultations/tests)
+     [java] PASS AllocationForm label fits: Lab or imaging request
+     [java] PASS AllocationForm label fits: Start (YYYY-MM-DDTHH:MM) *
+     [java] PASS AllocationForm label fits: End (YYYY-MM-DDTHH:MM) *
+     [java] PASS AllocationForm label fits: Allocation status *
+     [java] PASS AllocationForm fields initialise
+     [java] PASS RequestForm label fits: Requesting doctor *
+     [java] PASS RequestForm label fits: Patient *
+     [java] PASS RequestForm label fits: Test type *
+     [java] PASS RequestForm label fits: Doctor request details *
+     [java] PASS RequestForm label fits: Request status *
+     [java] PASS RequestForm fields initialise
+     [java] PASS RateForm label fits: Consultation type *
+     [java] PASS RateForm label fits: Base rate (MYR) *
+     [java] PASS RateForm label fits: Active *
+     [java] PASS RateForm fields initialise
+     [java] PASS InsuranceForm label fits: Insurance network name *
+     [java] PASS InsuranceForm label fits: Accepted *
+     [java] PASS InsuranceForm fields initialise
+     [java] ALL 95 CHECKS PASSED
+
+init:
+
+compile:
+
+jar:
+      [jar] Building jar: D:\Downloads\OODJ Assignment\dist\HMSAdmin.jar
+
+BUILD SUCCESSFUL
+Total time: 11 seconds

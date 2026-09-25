@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HMSAdmin" default="jar" basedir=".">
+    <description>APU Medical Centre administrative staff module</description>
+    <property file="nbproject/private/private.properties"/>
+    <property file="nbproject/project.properties"/>
+    <condition property="hms.java.home" value="${java.home}/" else="${java.home}"><matches string="${java.home}" pattern="^[A-Za-z]:$"/></condition>
+    <target name="init"><mkdir dir="build/classes"/><mkdir dir="dist"/></target>
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="build/classes" release="17" encoding="UTF-8" includeantruntime="false" fork="true" executable="${hms.java.home}/bin/javac"><compilerarg value="-J-Djava.home=${hms.java.home}"/></javac>
+    </target>
+    <target name="jar" depends="compile">
+        <jar destfile="dist/HMSAdmin.jar" basedir="build/classes"><manifest><attribute name="Main-Class" value="hms.App"/></manifest></jar>
+    </target>
+    <target name="run" depends="compile"><java classname="hms.App" fork="true" failonerror="true" jvm="${hms.java.home}/bin/java"><jvmarg value="-Djava.home=${hms.java.home}"/><classpath path="build/classes"/></java></target>
+    <target name="clean"><delete dir="build"/><delete dir="dist"/></target>
+    <target name="rebuild" depends="clean,jar"/>
+    <target name="test" depends="compile">
+        <mkdir dir="build/test-classes"/>
+        <javac srcdir="test" destdir="build/test-classes" release="17" encoding="UTF-8" includeantruntime="false" fork="true" executable="${hms.java.home}/bin/javac"><compilerarg value="-J-Djava.home=${hms.java.home}"/><classpath path="build/classes"/></javac>
+        <java classname="hms.ServiceTest" fork="true" failonerror="true" jvm="${hms.java.home}/bin/java"><jvmarg value="-Djava.home=${hms.java.home}"/><classpath path="build/classes${path.separator}build/test-classes"/></java>
+    </target>
+</project>

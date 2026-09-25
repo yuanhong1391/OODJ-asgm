@@ -1,0 +1,96 @@
+PASS Empty data folder requires initial setup
+PASS Unauthenticated access rejected
+PASS Short password rejected
+PASS Second bootstrap rejected
+PASS Incorrect password rejected
+PASS Case-insensitive username login
+PASS Self deletion blocked
+PASS Self deactivation blocked
+PASS Service does not expose password hashes
+PASS Password is not persisted as plaintext
+PASS Duplicate username is case-insensitively rejected
+PASS Wrong-role assignment blocked
+PASS Reassignment replaces the doctor's existing assignment
+PASS Referenced manager deletion blocked
+PASS Referenced user role cannot change
+PASS Bed requires a ward
+PASS Same-room overlap rejected
+PASS Doctor double booking rejected across consultation rooms
+PASS Patient overlap rejected across consultation rooms
+PASS Adjacent bookings are allowed
+PASS Reversed time range rejected
+PASS Malformed date rejected
+PASS Inpatient stay can overlap a consultation
+PASS Ward maintenance blocked while a bed is allocated
+PASS Asset deletion preserves allocation history
+PASS Text escaping round-trips tabs, newlines and backslashes
+PASS Scheduling derives SCHEDULED request status
+PASS Duplicate scheduling rejected even at a different time
+PASS Request cannot complete before its allocation
+PASS Request completion follows allocation completion
+PASS Closed request cannot be edited
+PASS Request history cannot be deleted
+PASS Currency stored with two decimals
+PASS Negative rate rejected
+PASS Excess currency precision rejected
+PASS Duplicate insurance network rejected
+PASS Unreferenced user can be deleted
+PASS Writes blocked after logout
+PASS Doctor cannot access admin listing
+PASS Doctor request API feeds admin queue
+PASS Request rejects a facility of the wrong type
+PASS Request rejects a mismatched patient
+PASS Request cancellation requires booked allocation cancellation first
+PASS Cancelling allocation returns request to OPEN
+PASS Cancelled allocation permits rescheduling and preserves history
+PASS Request cancels after allocations are cancelled
+PASS Concurrent application cannot own the same data folder
+PASS Records survive close and reopen
+PASS Corrupt file rejected without data reset
+PASS Corrupt source is preserved for recovery
+PASS LoginForm label fits: Username
+PASS LoginForm label fits: Password
+PASS LoginForm fields initialise
+PASS SetupForm label fits: Your full name
+PASS SetupForm label fits: Admin username
+PASS SetupForm label fits: Password (at least 8 characters)
+PASS SetupForm label fits: Confirm password
+PASS SetupForm fields initialise
+PASS UserForm label fits: Full name *
+PASS UserForm label fits: Username *
+PASS UserForm label fits: Role *
+PASS UserForm label fits: Password (blank keeps existing)
+PASS UserForm label fits: Email
+PASS UserForm label fits: Phone
+PASS UserForm label fits: Active *
+PASS UserForm fields initialise
+PASS AssignmentForm label fits: Doctor *
+PASS AssignmentForm label fits: Medical manager *
+PASS AssignmentForm fields initialise
+PASS AssetForm label fits: Asset name *
+PASS AssetForm label fits: Asset type *
+PASS AssetForm label fits: Parent ward (beds only)
+PASS AssetForm label fits: Availability *
+PASS AssetForm fields initialise
+PASS AllocationForm label fits: Facility or bed *
+PASS AllocationForm label fits: Patient *
+PASS AllocationForm label fits: Doctor (required for consultations/tests)
+PASS AllocationForm label fits: Lab or imaging request
+PASS AllocationForm label fits: Start (YYYY-MM-DDTHH:MM) *
+PASS AllocationForm label fits: End (YYYY-MM-DDTHH:MM) *
+PASS AllocationForm label fits: Allocation status *
+PASS AllocationForm fields initialise
+PASS RequestForm label fits: Requesting doctor *
+PASS RequestForm label fits: Patient *
+PASS RequestForm label fits: Test type *
+PASS RequestForm label fits: Doctor request details *
+PASS RequestForm label fits: Request status *
+PASS RequestForm fields initialise
+PASS RateForm label fits: Consultation type *
+PASS RateForm label fits: Base rate (MYR) *
+PASS RateForm label fits: Active *
+PASS RateForm fields initialise
+PASS InsuranceForm label fits: Insurance network name *
+PASS InsuranceForm label fits: Accepted *
+PASS InsuranceForm fields initialise
+ALL 95 CHECKS PASSED
