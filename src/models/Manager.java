@@ -1,8 +1,10 @@
+package models;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package managementsystem;
+
 
 /**
  *
@@ -15,7 +17,7 @@ public class Manager
     private String Email;
     private String Phone;
     
-    public Manager(String id,String name,String email,String phone)
+    public Manager(String managerID,String managername,String email,String phone)
     {
         this.managerID=managerID;
         this.managerName=managerName;
