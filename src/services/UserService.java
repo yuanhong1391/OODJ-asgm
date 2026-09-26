@@ -26,6 +26,7 @@ public class UserService {
     //read all user inside the txt file
     public List<User> loadAllUsers() 
     {
+        //using arraylist to avoid limit of row
         List<User> userList = new ArrayList<User>();
         File file = new File(filename);
          
@@ -39,14 +40,16 @@ public class UserService {
         try{
             input = new BufferedReader(new FileReader(filename));
             String line;
-            
+            // read every line inside txt.file until content of the line is empty(null)
             while ((line = input.readLine()) != null) 
             {
+                //trim used to delete sysbol /n
                 line = line.trim();
+                //if this line didn't have contect skip (avoid txtfile exits some line double new line)
                 if (line.equals("")) {
                 continue;}
             
-            
+            // using split to split the entire line into data by the , sysbol
             String[] data = line.split(",");
             
             String id = data[0];
@@ -80,4 +83,77 @@ public class UserService {
             e.printStackTrace();}
             return userList;
         } 
+    public boolean appendUser (User user) {
+        BufferedWriter output = null;
+        
+        try {
+            //FileWriter(filename, true) true means just add new contant and no change previous one
+            output = new BufferedWriter (new FileWriter (filename, true));
+            
+            //reuse method in user class (toTxtRecord)
+            output.write(user.toTxtRecord());
+            //once finish add a new user, add new line avoid next user in the same line
+            output.newLine();
+            
+            output.close();
+            return true;
+        } catch (IOException e) {
+        e.printStackTrace();
+        return false;}
+    }
+    
+    
+    public boolean saveAllUsers(List<User> userList) 
+    {
+        BufferedWriter output = null;
+        
+        try
+        {
+            //FileWritter false means empty entire txt file and rewrite it
+            output = new BufferedWriter(new FileWriter(filename, false));
+            //looping to rewrite the txt file
+            for (int i = 0; i < userList.size(); i++) 
+            {
+                User u = userList.get(i);
+                output.write(u.toTxtRecord());
+                output.newLine();
+            }
+            output.close();
+            return true;
+            
+        } catch (IOException e) {
+        e.printStackTrace();
+        return false;}
+    }
+    
+    public boolean updateUserProfile(String userId, String newName, String newPhone, String newEmail) 
+    {
+        //load every user data into list
+        List<User> list = loadAllUsers();
+        boolean found = false;
+        
+        //loop every line in the list
+        for (int i =0; i< list.size(); i++) 
+        {
+            User u = list.get(i);
+            //find which user match the userID
+            if (u.getID().equals(userId)) 
+            {
+                //rewrite the profile 
+                u.updateProfile(newName, newPhone, newEmail);
+                //change found to true to tell system success find the user 
+                found = true;
+                break;
+                
+            }
+        }
+        
+        //if user have been found rewrite all data to save it inside the txt file
+        if (found) 
+        {
+            return saveAllUsers(list);
+            
+        }
+        return false;
+    }
     }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
+import java.util.List;
 
 /**
  *
@@ -46,19 +47,53 @@ public class Patient extends User{
         this.emergencyContact = emergencyContact;
     }
     
-    public void bookAppointment (String doctorId, String dateTime) 
+    public void bookAppointment (String doctorId, String dateTime, String reason) 
     {
+        String appointmentId = services.FileHelper.generateNextId("A", "data/appointments.txt");
+        String status = "Sceduled";
         
+        String record = String.join(",", appointmentId, getID(), doctorId, dateTime, reason, status);
+        services.FileHelper.appendLine("data/appointments.txt", record);
     }
     
-    public void cancelAppoinment(String appointmentId) 
+    public boolean cancelAppoinment(String appointmentId) 
     {
+        List<String> appointments = services.FileHelper.readFile("data/appointments.txt");
+        boolean updated = false;
+        
+        for (int i=0; i < appointments.size(); i++) 
+        {
+            String[] data = appointments.get(i).split(",");
+            
+            if (data.length >= 6 && data[0].equals(appointmentId)) 
+            {
+                data[5] = "Cancelled";
+                appointments.set(i,String.join(",", data));
+                updated = true;
+                break;
+            }
+        }
+        
+        if (updated) 
+        {
+            services.FileHelper.writeFile("data/appointments.txt", appointments);
+            return updated;
+        }
+        
+        else 
+        {
+            return updated;
+        }
         
     }
     
     public void submitFeedback(String doctorId, int rating, String comment) 
     {
+        String feedbackId = services.FileHelper.generateNextId("FB", "data/feedbacks.txt");
+        String today = java.time.LocalDate.now().toString();
         
+        String record = String.join(",", feedbackId, getID(), doctorId, String.valueOf(rating), comment, today);
+        services.FileHelper.appendLine("data/feedbacks.txt", record);
     }
     
     //Patients specific get and set
