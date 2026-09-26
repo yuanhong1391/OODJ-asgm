@@ -88,4 +88,30 @@ public class FileHelper {
                 }
     }
     
+    public static boolean updateAppointmentContent(String id, int colIndex, String newValue)
+    {
+        List<String> lines = readFile("data/appointments.txt");
+        boolean updated = false;
+        
+        for (int i = 0; i < lines.size(); i++) 
+        {
+            String line = lines.get(i);
+            String[] data = line.split(",");
+            
+            if (data[0].trim().equalsIgnoreCase(id.trim())){
+            
+            data[colIndex] = newValue;
+            lines.set(i, String.join(",", data));
+            updated = true;
+            break;
+            }
+        }
+        
+        if (updated) 
+        {
+            return writeFile("data/appointments.txt", lines);
+        }
+        return false;
+    }
+    
 }

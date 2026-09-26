@@ -50,9 +50,9 @@ public class Patient extends User{
     public void bookAppointment (String doctorId, String dateTime, String reason) 
     {
         String appointmentId = services.FileHelper.generateNextId("A", "data/appointments.txt");
-        String status = "Sceduled";
+        String status = "Pending";
         
-        String record = String.join(",", appointmentId, getID(), doctorId, dateTime, reason, status);
+        String record = String.join(",", appointmentId, getID(),getName(), doctorId, dateTime, reason, status);
         services.FileHelper.appendLine("data/appointments.txt", record);
     }
     
