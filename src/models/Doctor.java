@@ -24,7 +24,7 @@ public class Doctor extends User{
     //Override user abstarct
     @Override
     public String toTxtRecord() {
-    return String.join("，",
+    return String.join(",",
             getID(),
             getUsername(),
             getPassword(),
@@ -38,21 +38,40 @@ public class Doctor extends User{
     }
     
     // Method log patient vital signs and write consultation notes
-    public void logVitaks(String patientID, String vitals) 
+    public void logVitaks(String patientID, String vitals, String notes) 
     {
+        //create a specific id for every vital
+        String vitalId = services.FileHelper.generateNextId("V","data/vitals.txt");
+        String today = java.time.LocalDate.now().toString();
         
+        //format of virtals.txt
+        String record = String.join(",", vitalId, patientID, getID(), today, vitals, notes);
+        
+        services.FileHelper.appendLine("data/vitals.txt", record);
     }
     
     // Method issue digital medication prescriptions
-    public void issuePrescription(String patientID, String medicine)
+    public void issuePrescription(String patientID, String medicine, String dosage)
     {
+        String prescriptionId = services.FileHelper.generateNextId("PR", "data/prescription.txt");
+        String today = java.time.LocalTime.now().toString();
+        String status = "Pending";
         
+        String record = String.join(",", prescriptionId + getID(), today ,medicine, dosage, status);
+        
+        services.FileHelper.appendLine("data/prescriptions.txt", record);
     }
     
     // Method issue requests to admin 
     public void requestsTest(String patientID, String testType) 
     {
+        String testId = services.FileHelper.generateNextId("T", "data/lab_tests.txt");
+        String today = java.time.LocalDate.now().toString();
+        String result = "none";
+        String status = "Requested";
         
+        String record = String.join(",", testId, patientID, getID(), today, testType, result, status);
+        services.FileHelper.appendLine("data/lab_tests.txt", record);
     }
     
     //Get and set for doctor specific attibutes
