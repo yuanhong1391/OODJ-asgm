@@ -38,7 +38,7 @@ public class Doctor extends User{
     }
     
     // Method log patient vital signs and write consultation notes
-    public void logVitaks(String patientID, String vitals, String notes) 
+    public void logVitals(String patientID, String vitals, String notes) 
     {
         //create a specific id for every vital
         String vitalId = services.FileHelper.generateNextId("V","data/vitals.txt");
@@ -57,7 +57,7 @@ public class Doctor extends User{
         String today = java.time.LocalTime.now().toString();
         String status = "Pending";
         
-        String record = String.join(",", prescriptionId + getID(), today ,medicine, dosage, status);
+        String record = String.join(",", prescriptionId, getID(), today ,medicine, dosage, status);
         
         services.FileHelper.appendLine("data/prescriptions.txt", record);
     }
