@@ -1,0 +1,2 @@
+V0001,P001,D001,2026-09-27,BP: 120/80. Temp: 37.7,Everything is in good condition, just some inflammation, give some inflammation medicine and require blood test to ensure no deterioration
+V0002,P002,D002,2026-09-27,BP: 118/75. Temp: 38.0,fever, preliminary diaggnosis common cold

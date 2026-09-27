@@ -1,0 +1,2 @@
+PR0001,D001,09:57:57.147641200,Amoxicillin,two pills a day, after meals(Remarks: Dont consume when empty stomach),Pending
+PR0001,D002,10:16:21.179197600,Antihistamines,one pills a day, after meals,Pending

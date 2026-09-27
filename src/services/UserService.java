@@ -156,4 +156,33 @@ public class UserService {
         }
         return false;
     }
+    
+    public boolean updatePassword(String id, String newPassword) 
+    {
+        List<User> list = loadAllUsers();
+        boolean found = false;
+        
+        for (int i =0; i< list.size(); i++) 
+        {
+            User u = list.get(i);
+            //find which user match the userID
+            if (u.getID().equals(id)) 
+            {
+                //rewrite the profile 
+                u.setPassword(newPassword);
+                //change found to true to tell system success find the user 
+                found = true;
+                break;
+                
+            }
+            
+            
+        }
+        if (found) 
+        {
+            return saveAllUsers(list);
+            
+        }
+        return false;
+    }
     }

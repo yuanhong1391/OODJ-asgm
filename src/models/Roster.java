@@ -19,7 +19,7 @@ public class Roster
     
     public Roster(String roasterID,String doctorID,String shiftDate,String shiftType)
     {
-        this.rosterID = rosterID;
+        this.rosterID = roasterID;
         this.doctorID = doctorID;
         this.shiftDate = shiftDate;
         this.shiftType = shiftType;

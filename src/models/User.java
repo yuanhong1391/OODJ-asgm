@@ -80,6 +80,9 @@ public abstract class User {
     public void setName (String name) {
     this.name = name;}
     
+    public void setPassword(String password) {
+        this.password = password;}
+    
     public void setPhone (String phone) {
     this.phone = phone;}
     

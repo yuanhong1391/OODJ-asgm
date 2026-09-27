@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.pack();
     }
 
     /**
@@ -166,6 +167,12 @@ public class Login extends javax.swing.JFrame {
             if (role.equalsIgnoreCase("Doctor")) 
             {
                 new DoctorDashboard((Doctor) matchedUser).setVisible(true);
+                this.dispose();
+            }
+            
+            else if(role.equalsIgnoreCase("Patient")) 
+            {
+                new PatientDashboard((Patient) matchedUser).setVisible(true);
                 this.dispose();
             }
         }
