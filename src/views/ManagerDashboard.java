@@ -11,13 +11,20 @@ package views;
 public class ManagerDashboard extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManagerDashboard.class.getName());
-
+    private models.Manager currentManager;
     /**
      * Creates new form ManagerDashboard
      */
     public ManagerDashboard() {
         initComponents();
     }
+    
+    public ManagerDashboard(models.Manager currentManager) 
+    {
+        this.currentManager = currentManager;
+        initComponents();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,8 +107,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        EditProfile Profile = new EditProfile();
-        Profile.setVisible(true);
+        EditProfile profile = new EditProfile(this.currentManager);
+        profile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -128,6 +135,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**

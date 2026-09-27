@@ -175,6 +175,12 @@ public class Login extends javax.swing.JFrame {
                 new PatientDashboard((Patient) matchedUser).setVisible(true);
                 this.dispose();
             }
+            
+            else if (role.equalsIgnoreCase("Manager")) 
+            {
+                new ManagerDashboard((models.Manager)matchedUser) .setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.List;
 /**
  *
  * @author tengk
  */
 public class EditProfile extends javax.swing.JFrame {
     
+    private models.Manager currentManager;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditProfile.class.getName());
 
     /**
@@ -25,44 +27,26 @@ public class EditProfile extends javax.swing.JFrame {
         loadProfile();
     }
     
+    public EditProfile(models.Manager currentManager) 
+    {
+        this.currentManager = currentManager;
+        initComponents();
+        txtManagerID.setEditable(false);
+        loadProfile();
+        
+    }
+    
     private void loadProfile()
     {
-        try
+        if(currentManager == null) 
         {
-            File file = new File("manager.txt");
-            Scanner input = new Scanner(file);//Scan to read file
-            
-            while (input.hasNextLine())
-            {
-                String line = input.nextLine();
-                if(line.startsWith("ManagerID:"))
-                {
-                    //take the things after (ManagerID:(10 letter))
-                    txtManagerID.setText(line.substring(10).trim());
-                }
-                else if(line.startsWith("Name:"))
-                {
-                    txtName.setText(line.substring(5).trim());
-                }
-                else if(line.startsWith("Phone:"))
-                {
-                    txtPhone.setText(line.substring(6).trim());
-                }
-                else if(line.startsWith("Email:"))
-                {
-                    txtEmail.setText(line.substring(6).trim());
-                }
-            }
-            input.close();
+            return;
         }
-        catch(IOException e)//set deafult ManagerID
-        {
-            txtManagerID.setText("M001");
-            
-            JOptionPane.showMessageDialog(
-            this,"no existing Profile found."
-            );
-        }
+        txtUsername.setText(currentManager.getUsername());
+        txtManagerID.setText(currentManager.getID());
+        txtName.setText(currentManager.getName());
+        txtPhone.setText(currentManager.getPhone());
+        txtEmail.setText(currentManager.getEmail());
     }
 
     /**
@@ -85,6 +69,11 @@ public class EditProfile extends javax.swing.JFrame {
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblUsername = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        btnChangePass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,79 +91,109 @@ public class EditProfile extends javax.swing.JFrame {
         btnSave.setText("Save");
         btnSave.addActionListener(this::btnSaveActionPerformed);
 
+        txtManagerID.setEditable(false);
         txtManagerID.setToolTipText("");
         txtManagerID.addActionListener(this::txtManagerIDActionPerformed);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Edit Proflie");
 
+        txtUsername.setEditable(false);
+        txtUsername.setToolTipText("");
+        txtUsername.addActionListener(this::txtUsernameActionPerformed);
+
+        lblUsername.setText("User Name: ");
+
+        jLabel7.setText("Password: ");
+
+        txtPassword.setEditable(false);
+        txtPassword.setText("jPasswordField1");
+
+        btnChangePass.setText("Change");
+        btnChangePass.addActionListener(this::btnChangePassActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(179, 179, 179)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                                .addGap(104, 104, 104)
+                                .addComponent(jLabel3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblUsername)
+                                        .addComponent(jLabel1))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSave))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtManagerID))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPhone)))
-                .addContainerGap(92, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(161, 161, 161))
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtManagerID)
+                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnChangePass)))
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(101, 101, 101)
+                .addComponent(btnSave)
+                .addGap(113, 113, 113))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtManagerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtManagerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnChangePass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSave))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -208,35 +227,45 @@ public class EditProfile extends javax.swing.JFrame {
         }
         
         //check Phone number
-            if(!phone.matches("01\\d{8,9}"))
+        if(!phone.matches("01\\d{8,9}"))
         {
             JOptionPane.showMessageDialog(this,"Please enter a valid phone number.\nExample: 0123456789");
             txtPhone.requestFocus();
             return; 
         }
-
-        try
+        
+        services.UserService userService = new services.UserService();
+        boolean success = userService.updateUserProfile(currentManager.getID(), name, phone, email);
+        
+        if (success) 
         {
-            FileWriter writer = new FileWriter("manager.txt");
-            writer.write("ManagerID:"+managerID+"\n");
-            writer.write("Name:"+name+"\n");
-            writer.write("Phone:"+phone+"\n");
-            writer.write("Email:"+email+"\n");
-            writer.close();
-            JOptionPane.showMessageDialog(this,"Saved successfully");
+            currentManager.updateProfile(name, phone, email);
+            JOptionPane.showMessageDialog(this, "Profile updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
-        catch(IOException e)
+        
+        else
         {
-            JOptionPane.showMessageDialog(this,"File not found");   
+            JOptionPane.showMessageDialog(this, "Failed to update profile. Please try again", "Error", JOptionPane.ERROR_MESSAGE);
+            loadProfile();
         }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        ManagerDashboard Dashboard = new ManagerDashboard();
-        Dashboard.setVisible(true);
+        ManagerDashboard dashboard = new ManagerDashboard(this.currentManager);
+        dashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void btnChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassActionPerformed
+        // TODO add your handling code here:
+        new ChangePassword(currentManager.getID()).setVisible(true);
+    }//GEN-LAST:event_btnChangePassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,15 +294,20 @@ public class EditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnChangePass;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtManagerID;
     private javax.swing.JTextField txtName;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

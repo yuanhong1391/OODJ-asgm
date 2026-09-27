@@ -302,6 +302,22 @@ private void updateSlotStatus()
         lblPres = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         btnConPresRefresh = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        lblReview = new javax.swing.JLabel();
+        lblFeedSelectDoc = new javax.swing.JLabel();
+        cboxFeedSelectDoc = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        cboxFeedRating = new javax.swing.JComboBox<>();
+        lblFeed = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtFeed = new javax.swing.JTextArea();
+        btnSubmitFeed = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblFeed = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        btnFeedRefresh = new javax.swing.JButton();
+        btnDeleteFeed = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         lblProID = new javax.swing.JLabel();
@@ -325,22 +341,6 @@ private void updateSlotStatus()
         btnChangePass = new javax.swing.JButton();
         lblProName1 = new javax.swing.JLabel();
         txtProUserName = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        lblReview = new javax.swing.JLabel();
-        lblFeedSelectDoc = new javax.swing.JLabel();
-        cboxFeedSelectDoc = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        cboxFeedRating = new javax.swing.JComboBox<>();
-        lblFeed = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txtFeed = new javax.swing.JTextArea();
-        btnSubmitFeed = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tblFeed = new javax.swing.JTable();
-        jLabel14 = new javax.swing.JLabel();
-        btnFeedRefresh = new javax.swing.JButton();
-        btnDeleteFeed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -651,6 +651,7 @@ private void updateSlotStatus()
         jPanel13.setBackground(new java.awt.Color(175, 175, 175));
 
         btnConPresRefresh.setText("Refresh");
+        btnConPresRefresh.addActionListener(this::btnConPresRefreshActionPerformed);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -702,6 +703,152 @@ private void updateSlotStatus()
         );
 
         jTabbedPane1.addTab("Medical Records", jPanel3);
+
+        jPanel12.setBackground(new java.awt.Color(175, 175, 175));
+
+        lblReview.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblReview.setText("Rate & Review Doctor");
+
+        lblFeedSelectDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFeedSelectDoc.setText("Select Doctor: ");
+
+        cboxFeedSelectDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setText("Rating: ");
+
+        cboxFeedRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5 - Excellent (* * * * *)", "4 - Good (* * * *)", "3 - Average (* * *)", "2 - Poor (* *)", "1 - Terrible (*)" }));
+
+        lblFeed.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFeed.setText("Your Feedback / Comments: ");
+
+        txtFeed.setColumns(20);
+        txtFeed.setRows(5);
+        jScrollPane5.setViewportView(txtFeed);
+
+        btnSubmitFeed.setText("Submit FeedBack");
+        btnSubmitFeed.addActionListener(this::btnSubmitFeedActionPerformed);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFeed))
+                .addGap(18, 18, 18))
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblReview)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFeedSelectDoc)
+                                    .addComponent(jLabel12))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboxFeedSelectDoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboxFeedRating, 0, 178, Short.MAX_VALUE)))))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnSubmitFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(lblReview)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(lblFeedSelectDoc)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(cboxFeedSelectDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(cboxFeedRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(lblFeed)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnSubmitFeed)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tblFeed.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Doctor", "Rating", "Date", "Comments"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tblFeed);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel14.setText("My Review History");
+
+        btnFeedRefresh.setText("Refresh");
+        btnFeedRefresh.addActionListener(this::btnFeedRefreshActionPerformed);
+
+        btnDeleteFeed.setText("Delete");
+        btnDeleteFeed.setToolTipText("");
+        btnDeleteFeed.addActionListener(this::btnDeleteFeedActionPerformed);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnDeleteFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFeedRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFeedRefresh)
+                    .addComponent(btnDeleteFeed))
+                .addGap(0, 55, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Feedback & Rating", jPanel4);
 
         lblProID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProID.setText("Patient ID: ");
@@ -863,151 +1010,6 @@ private void updateSlotStatus()
 
         jTabbedPane1.addTab("My Profile", jPanel5);
 
-        jPanel12.setBackground(new java.awt.Color(175, 175, 175));
-
-        lblReview.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblReview.setText("Rate & Review Doctor");
-
-        lblFeedSelectDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblFeedSelectDoc.setText("Select Doctor: ");
-
-        cboxFeedSelectDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setText("Rating: ");
-
-        cboxFeedRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5 - Excellent (* * * * *)", "4 - Good (* * * *)", "3 - Average (* * *)", "2 - Poor (* *)", "1 - Terrible (*)" }));
-
-        lblFeed.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblFeed.setText("Your Feedback / Comments: ");
-
-        txtFeed.setColumns(20);
-        txtFeed.setRows(5);
-        jScrollPane5.setViewportView(txtFeed);
-
-        btnSubmitFeed.setText("Submit FeedBack");
-        btnSubmitFeed.addActionListener(this::btnSubmitFeedActionPerformed);
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFeed))
-                .addGap(18, 18, 18))
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReview)
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFeedSelectDoc)
-                                    .addComponent(jLabel12))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cboxFeedSelectDoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboxFeedRating, 0, 178, Short.MAX_VALUE)))))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(btnSubmitFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblReview)
-                .addGap(60, 60, 60)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(lblFeedSelectDoc)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel12))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(cboxFeedSelectDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(cboxFeedRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35)
-                .addComponent(lblFeed)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnSubmitFeed)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tblFeed.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Doctor", "Rating", "Date", "Comments"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(tblFeed);
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel14.setText("My Review History");
-
-        btnFeedRefresh.setText("Refresh");
-
-        btnDeleteFeed.setText("Delete");
-        btnDeleteFeed.setToolTipText("");
-        btnDeleteFeed.addActionListener(this::btnDeleteFeedActionPerformed);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnDeleteFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(btnFeedRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFeedRefresh)
-                    .addComponent(btnDeleteFeed))
-                .addGap(0, 55, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Feedback & Rating", jPanel4);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1035,10 +1037,11 @@ private void updateSlotStatus()
         String newPhone = txtProPhone.getText().trim();
         String newEmail = txtProEmail.getText().trim();
         String newName = txtProName.getText().trim();
+        String newEmer = txtEmerCon.getText().trim();
 
-        if (newPhone.isEmpty() || newEmail.isEmpty() || newName.isEmpty())
+        if (newPhone.isEmpty() || newEmail.isEmpty() || newName.isEmpty() || newEmer.isEmpty())
         {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please do not leave Name, Phone or Email empty!", "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Please do not leave Name, Phone, Email or Emergency Contact empty!", "Invalid Input", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -1051,12 +1054,26 @@ private void updateSlotStatus()
         }
 
         services.UserService userService = new services.UserService();
+        List<models.User> list = userService.loadAllUsers();
+        boolean found = false;
+        
+        for (models.User u : list) {
+            if (u.getID().equalsIgnoreCase(currentPatient.getID())) 
+            {
+                if (u instanceof models.Patient) 
+                {
+                    models.Patient p = (models.Patient) u;
+                    p.updateProfile(newName, newPhone, newEmail, newEmer);
+                    found = true;
+                    break;
+                }
+            }
+        }
+        
 
-        boolean success = userService.updateUserProfile(currentPatient.getID(), newName, newPhone, newEmail);
-
-        if (success)
+        if (found && userService.saveAllUsers(list))
         {
-            currentPatient.updateProfile(newName, newPhone, newEmail);
+            currentPatient.updateProfile(newName, newPhone, newEmail, newEmer);
 
             lblHeaderPatient.setText("Welcome, " + currentPatient.getName() + " ID: " + currentPatient.getID());
 
@@ -1318,6 +1335,16 @@ private void updateSlotStatus()
             javax.swing.JOptionPane.showMessageDialog(this, "Failed to delete feedback.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteFeedActionPerformed
+
+    private void btnFeedRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedRefreshActionPerformed
+        // TODO add your handling code here:
+        loadTableFeed();
+    }//GEN-LAST:event_btnFeedRefreshActionPerformed
+
+    private void btnConPresRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConPresRefreshActionPerformed
+        // TODO add your handling code here:
+        loadTableConPres();
+    }//GEN-LAST:event_btnConPresRefreshActionPerformed
 
     /**
      * @param args the command line arguments

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class ManageRoster extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageRoster.class.getName());
-
+    private models.Manager currentManager;
     /**
      * Creates new form ManageRoaster
      */
@@ -28,9 +28,18 @@ public class ManageRoster extends javax.swing.JFrame {
         loadRoster();
     }
     
+    public ManageRoster(models.Manager currentManager) {
+        this.currentManager = currentManager;
+        initComponents();
+        rosterList.setEditable(false);
+        loadRoster();
+    }
+    
+    
+    
     private void loadRoster()
     {
-        File file = new File("roster.txt");
+        File file = new File("data/roster.txt");
         rosterList.setText("");
         
         if(!file.exists())
@@ -178,7 +187,7 @@ public class ManageRoster extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        ManagerDashboard dashboard = new ManagerDashboard();
+        ManagerDashboard dashboard = new ManagerDashboard(this.currentManager);
         dashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -233,7 +242,7 @@ public class ManageRoster extends javax.swing.JFrame {
         
         try
         {
-            FileWriter writer = new FileWriter("roster.txt",true);
+            FileWriter writer = new FileWriter("data/roster.txt",true);
             writer.write("RosterID:"+rosterID+"\n");
             writer.write("DoctorID:"+doctorID+"\n");
             writer.write("ShiftDate:"+shiftDate+"\n");
@@ -296,7 +305,7 @@ public class ManageRoster extends javax.swing.JFrame {
             return;
         }
         
-        File file = new File("roster.txt");
+        File file = new File("data/roster.txt");
         if(!file.exists())
         {
             JOptionPane.showMessageDialog(this, "No roster record found");
@@ -349,7 +358,7 @@ public class ManageRoster extends javax.swing.JFrame {
                 return;
             }
             
-            FileWriter writer = new FileWriter("roster.txt");
+            FileWriter writer = new FileWriter("data/roster.txt");
             writer.write(updateData.toString());
             writer.close();
             JOptionPane.showMessageDialog(this,"Roster updated successfully");
@@ -390,7 +399,7 @@ public class ManageRoster extends javax.swing.JFrame {
         
     private boolean rosterIDExists(String rosterID)
     {
-        File file = new File("roster.txt");
+        File file = new File("data/roster.txt");
         
         if(!file.exists())
         {
@@ -423,7 +432,7 @@ public class ManageRoster extends javax.swing.JFrame {
     
     private boolean shiftExists(String doctorID,String shiftDate,String shiftType)
     {
-        File file = new File("roster.txt");
+        File file = new File("data/roster.txt");
         
         if(!file.exists())
         {
@@ -464,7 +473,7 @@ public class ManageRoster extends javax.swing.JFrame {
     
     private boolean shiftExistsForUpdate(String rosterID,String doctorID,String shiftDate,String shiftType)
     {
-    File file = new File("roster.txt");
+    File file = new File("data/roster.txt");
 
     if(!file.exists())
     {

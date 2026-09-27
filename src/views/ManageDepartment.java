@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class ManageDepartment extends javax.swing.JFrame {
     
+    private models.Manager currentManager;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageDepartment.class.getName());
 
     /**
@@ -22,6 +23,14 @@ public class ManageDepartment extends javax.swing.JFrame {
     public ManageDepartment() 
     {
         initComponents();
+        Departmentlist.setEditable(false);
+        loadDepartments();
+    }
+    
+        public ManageDepartment(models.Manager currentManager) 
+    {
+        initComponents();
+        this.currentManager = currentManager;
         Departmentlist.setEditable(false);
         loadDepartments();
     }
@@ -143,7 +152,7 @@ public class ManageDepartment extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        ManagerDashboard dashboard = new ManagerDashboard();
+        ManagerDashboard dashboard = new ManagerDashboard(this.currentManager);
         dashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -162,7 +171,7 @@ public class ManageDepartment extends javax.swing.JFrame {
         }
         
         //check ID
-        if(!departmentID.matches("D\\d{3}"))
+        if(!departmentID.matches("DEP\\d{3}"))
         {
             JOptionPane.showMessageDialog(this,"Department must be DXXX");
             txtID.requestFocus();
@@ -186,7 +195,7 @@ public class ManageDepartment extends javax.swing.JFrame {
         
         try
         {
-            FileWriter writer = new FileWriter("department.txt",true);
+            FileWriter writer = new FileWriter("data/department.txt",true);
             writer.write("DepartmentID:"+departmentID+"\n");
             writer.write("DepartmentName:"+departmentName+"\n");
             writer.write("Description:"+description+"\n");
@@ -221,7 +230,7 @@ public class ManageDepartment extends javax.swing.JFrame {
             return;
         }
         
-        if(!departmentID.matches("D\\d{3}"))
+        if(!departmentID.matches("DEP\\d{3}"))
         {
             JOptionPane.showMessageDialog(this,"Department ID must be DXXX");
             txtID.requestFocus();
@@ -236,7 +245,7 @@ public class ManageDepartment extends javax.swing.JFrame {
             return;
         }
         
-        File file = new File("department.txt");
+        File file = new File("data/department.txt");
         if(!file.exists())
         {
             JOptionPane.showMessageDialog(this,"No department records found");
@@ -285,7 +294,7 @@ public class ManageDepartment extends javax.swing.JFrame {
                 return;
             }
             
-            FileWriter writer = new FileWriter("department.txt");
+            FileWriter writer = new FileWriter("data/department.txt");
             writer.write(updateData.toString());
             writer.close();
             JOptionPane.showMessageDialog(this,"Department updated successfully");
@@ -304,7 +313,7 @@ public class ManageDepartment extends javax.swing.JFrame {
 
     private void loadDepartments()
     {
-        File file = new File("department.txt");
+        File file = new File("data/department.txt");
         
         Departmentlist.setText("");
         
@@ -332,7 +341,7 @@ public class ManageDepartment extends javax.swing.JFrame {
     }
     private boolean departmentIDExists(String departmentID)
     {
-        File file = new File("department.txt");
+        File file = new File("data/department.txt");
         
         if(!file.exists())
         {
