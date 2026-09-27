@@ -114,4 +114,16 @@ public class FileHelper {
         return false;
     }
     
+    public static String findNameBasedID(String Id, String role) {
+    services.UserService userService = new services.UserService();
+    List<models.User> users = userService.loadAllUsers();
+    
+    for (models.User u : users) {
+        if (u.getID().equalsIgnoreCase(Id) && u.getRole().equalsIgnoreCase(role)) {
+            return u.getName(); // 
+        }
+    }
+    return null; // 
+}
+    
 }

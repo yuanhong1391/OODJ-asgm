@@ -1,7 +1,16 @@
 A0001,P001,John Doe,D001,2026-09-26,Cancelled,Cancelled
 A0002,P002,Alice Wong,D001,2026-09-26,Chest discomfort,Completed
-A0003,P001,John Doe,D001,2026-09-27,Follow-up consultation,Pending
+A0003,P001,John Doe,D001,2026-09-27,Follow-up consultation,Completed
 A0004,P002,Alice Wong,D001,2026-09-25,Routine health check,Completed
 A0005,P001,John Doe,D001,2026-09-26,Heart rate check,Cancelled
-A0006,P002,Alice Wong,D002,2026-09-26,Severe skin rash,Pending
+A0006,P002,Alice Wong,D002,2026-09-26,Severe skin rash,Completed
 A0007,P001,John Doe,D002,2026-09-28,Skin allergy treatment,Completed
+A0008,P001,John Doe,D001,2026-10-04,Cold,Pending
+A0009,P002,Alice Wong,D001,2026-09-28,asma,Pending
+A0010,P002,Alice Wong,D001,2026-09-28,test,Pending
+A0011,P002,Alice Wong,D001,2026-09-28,dd,Pending
+A0012,P002,Alice Wong,D001,2026-09-28,t,Pending
+A0013,P002,Alice Wong,D001,2026-09-28,t,Pending
+A0014,P002,Alice Wong,D001,2026-09-28,t,Cancelled
+A0015,P002,Alice Wong,D001,2026-09-28,t,Cancelled
+A0016,P002,Alice Wong,D001,2026-09-28,t,Cancelled

@@ -54,7 +54,7 @@ public class Doctor extends User{
     public void issuePrescription(String patientID, String medicine, String dosage)
     {
         String prescriptionId = services.FileHelper.generateNextId("PR", "data/prescription.txt");
-        String today = java.time.LocalTime.now().toString();
+        String today = java.time.LocalDate.now().toString();
         String status = "Pending";
         
         String record = String.join(",", prescriptionId, getID(), today ,medicine, dosage, status);
