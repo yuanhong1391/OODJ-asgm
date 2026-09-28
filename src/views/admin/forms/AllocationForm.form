@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+    <Property name="rows" type="int" value="0"/>
+    <Property name="columns" type="int" value="2"/>
+    <Property name="horizontalGap" type="int" value="14"/>
+    <Property name="verticalGap" type="int" value="12"/>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="assetIdLabel"><Properties><Property name="text" type="java.lang.String" value="Facility or bed *"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="assetIdField"/></Property></Properties></Component>
+    <Component class="javax.swing.JComboBox" name="assetIdField"><Properties><Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor"><StringArray count="1"><StringItem index="0" value=""/></StringArray></Property></Properties><AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues></Component>
+    <Component class="javax.swing.JLabel" name="patientIdLabel"><Properties><Property name="text" type="java.lang.String" value="Patient *"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="patientIdField"/></Property></Properties></Component>
+    <Component class="javax.swing.JComboBox" name="patientIdField"><Properties><Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor"><StringArray count="1"><StringItem index="0" value=""/></StringArray></Property></Properties><AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues></Component>
+    <Component class="javax.swing.JLabel" name="doctorIdLabel"><Properties><Property name="text" type="java.lang.String" value="Doctor (required for consultations/tests)"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="doctorIdField"/></Property></Properties></Component>
+    <Component class="javax.swing.JComboBox" name="doctorIdField"><Properties><Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor"><StringArray count="1"><StringItem index="0" value=""/></StringArray></Property></Properties><AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues></Component>
+    <Component class="javax.swing.JLabel" name="requestIdLabel"><Properties><Property name="text" type="java.lang.String" value="Lab or imaging request"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="requestIdField"/></Property></Properties></Component>
+    <Component class="javax.swing.JComboBox" name="requestIdField"><Properties><Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor"><StringArray count="1"><StringItem index="0" value=""/></StringArray></Property></Properties><AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues></Component>
+    <Component class="javax.swing.JLabel" name="startLabel"><Properties><Property name="text" type="java.lang.String" value="Start (YYYY-MM-DDTHH:MM) *"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="startField"/></Property></Properties></Component>
+    <Component class="javax.swing.JTextField" name="startField"></Component>
+    <Component class="javax.swing.JLabel" name="endLabel"><Properties><Property name="text" type="java.lang.String" value="End (YYYY-MM-DDTHH:MM) *"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="endField"/></Property></Properties></Component>
+    <Component class="javax.swing.JTextField" name="endField"></Component>
+    <Component class="javax.swing.JLabel" name="statusLabel"><Properties><Property name="text" type="java.lang.String" value="Allocation status *"/><Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor"><ComponentRef name="statusField"/></Property></Properties></Component>
+    <Component class="javax.swing.JComboBox" name="statusField"><Properties><Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor"><StringArray count="3"><StringItem index="0" value="BOOKED"/><StringItem index="1" value="COMPLETED"/><StringItem index="2" value="CANCELLED"/></StringArray></Property></Properties><AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues></Component>
+  </SubComponents>
+</Form>
