@@ -1,0 +1,2 @@
+id,assetId,patientId,doctorId,requestId,start,end,status
+ALC-2b107239-10be-4a6c-8d66-9c7a8e0a3ea1,AST-55f3d5f2-909f-4281-9fea-99f463128e98,P001,D001,T0001,2026-09-28T14:00,2026-09-28T15:00,BOOKED

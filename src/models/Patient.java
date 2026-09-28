@@ -52,6 +52,8 @@ public class Patient extends User{
         String appointmentId = services.FileHelper.generateNextId("A", "data/appointments.txt");
         String status = "Pending";
         
+        reason = services.FileHelper.clean(reason);
+        
         String record = String.join(",", appointmentId, getID(),getName(), doctorId, dateTime, reason, status);
         services.FileHelper.appendLine("data/appointments.txt", record);
     }
@@ -91,6 +93,7 @@ public class Patient extends User{
     {
         String feedbackId = services.FileHelper.generateNextId("FB", "data/feedbacks.txt");
         String today = java.time.LocalDate.now().toString();
+        comment = services.FileHelper.clean(comment);
         
         String record = String.join(",", feedbackId, getID(), doctorId, String.valueOf(rating), comment, today);
         services.FileHelper.appendLine("data/feedbacks.txt", record);

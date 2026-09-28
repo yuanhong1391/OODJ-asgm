@@ -15,12 +15,13 @@ import javax.swing.JOptionPane;
 public class ManageReport extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageReport.class.getName());
-
+    private models.Manager currentManager;
     /**
      * Creates new form ManageReport
      */
     public ManageReport() {
         initComponents();
+        setLocationRelativeTo(null);
         txtDepartment.setEditable(false);
         txtRoster.setEditable(false);
         txtDoctor.setEditable(false);
@@ -29,6 +30,17 @@ public class ManageReport extends javax.swing.JFrame {
         txtRevenue.setEditable(false);
         loadReport();
     }
+    
+        public ManageReport(models.Manager currentManager) {
+        this.currentManager = currentManager;
+        initComponents();
+        txtDepartment.setEditable(false);
+        txtRoster.setEditable(false);
+        txtDoctor.setEditable(false);
+        txtPatient.setEditable(false);
+        txtAppointment.setEditable(false);
+        txtRevenue.setEditable(false);
+        loadReport();}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,7 +170,7 @@ public class ManageReport extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        ManagerDashboard dashboard = new ManagerDashboard();
+        ManagerDashboard dashboard = new ManagerDashboard(this.currentManager);
         dashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -172,19 +184,57 @@ public class ManageReport extends javax.swing.JFrame {
 
     public void loadReport()
     {
-        int totalDepartment = countRecords("department.txt","DepartmentID:");
-        int totalRoster = countRecords("roster.txt","RosterID:");
-        int totalDoctor = countRecords("doctor.txt","DoctorID:");
-        int totalPatient = countRecords("patient.txt","PatientID:");
-        int totalAppointment = countRecords("appointment.txt","AppointmentID:");
-        double totalRevenue = calculateRevenue("payment.txt");
+        int totalDepartment = countRecords("data/department.txt", "DepartmentID:");
+
+        int totalRoster = countRecords("data/roster.txt", "RosterID:");
+        
+        int totalDoctor = 0;
+        int totalPatient = 0;
+        
+        for (String line : services.FileHelper.readFile("data/users.txt")) 
+        {
+            String[] parts = line.split(",");
+            if (parts.length >= 7) 
+            {
+                String role = parts[6].trim();
+                
+                if (role.equalsIgnoreCase("Doctor")) 
+                {
+                    totalDoctor++;
+                }
+                
+                else if (role.equalsIgnoreCase("Patient")) 
+                {
+                    totalPatient++;
+                }
+            }
+        }
+        
+        java.util.List<String> appLines = services.FileHelper.readFile("data/appointments.txt");
+        int totalApp = appLines.size();
+        double totalRevenue = 0.0;
+        double consultationFee = 50.0;
+        
+        for (String line : appLines) 
+        {
+            String[] parts = line.split(",");
+            if (parts.length >= 7) 
+            {
+                if (parts[6].trim().equalsIgnoreCase("Completed")) 
+                {
+                   totalRevenue += consultationFee; 
+                }
+            }
+        }
         
         txtDepartment.setText(String.valueOf(totalDepartment));
         txtRoster.setText(String.valueOf(totalRoster));
         txtDoctor.setText(String.valueOf(totalDoctor));
         txtPatient.setText(String.valueOf(totalPatient));
-        txtAppointment.setText(String.valueOf(totalAppointment));
-        txtRevenue.setText(String.format("RM %.2f",totalRevenue));
+        txtAppointment.setText(String.valueOf(totalApp));
+        txtRevenue.setText(String.format("RM %.2f", totalRevenue));
+        
+        
     }
     
     private int countRecords(String filename,String recordPrefix)

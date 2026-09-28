@@ -14,6 +14,8 @@ import java.util.List;
 import models.Doctor;
 import models.Patient;
 import models.User;
+import models.Manager;
+import models.AdminStaff;
 
 /**
  *
@@ -77,6 +79,19 @@ public class UserService {
                 Patient pat = new Patient(id, username, password, name, phone, email, bloodType, emergencyContact, medicalHistory);
                 userList.add(pat);
             }
+            
+            else if(role.equalsIgnoreCase("Manager"))
+            {
+                Manager mgr = new Manager(id, username, password, name, phone, email);
+                userList.add(mgr);
+            }
+            
+            else if(role.equalsIgnoreCase("Admin")) 
+            {
+                userList.add(new AdminStaff(id, username, password, name, phone, email));
+            }
+            
+            
             }
             input.close();
             } catch (IOException e) {

@@ -14,3 +14,4 @@ A0013,P002,Alice Wong,D001,2026-09-28,t,Pending
 A0014,P002,Alice Wong,D001,2026-09-28,t,Cancelled
 A0015,P002,Alice Wong,D001,2026-09-28,t,Cancelled
 A0016,P002,Alice Wong,D001,2026-09-28,t,Cancelled
+A0017,P001,John Doe,D001,2026-09-29 Night,Cold,Pending

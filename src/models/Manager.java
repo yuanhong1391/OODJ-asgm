@@ -10,48 +10,28 @@ package models;
  *
  * @author tengk
  */
-public class Manager 
+public class Manager extends User  
 {
-    private String managerID;
-    private String managerName;
-    private String Email;
-    private String Phone;
     
-    public Manager(String managerID,String managername,String email,String phone)
+    public Manager(String id,String username,String password,String name, String phone, String email)
     {
-        this.managerID=managerID;
-        this.managerName=managerName;
-        this.Email=Email;
-        this.Phone=Phone;
+        super(id, username, password, name, phone, email, "Manager");
     }
     
-    public String getID()
+    @Override
+    public String toTxtRecord() 
     {
-        return managerID;
-    }
-    
-    public String getName()
-    {
-        return managerName;
-    }
-    public String getEmail()
-    {
-        return Email;
-    }
-    public String getPhone()
-    {
-        return Phone;
-    }
-    public void setName(String managerName)
-    {
-        this.managerName=managerName;
-    }
-    public void setEmail(String Email)
-    {
-        this.Email=Email;
-    }
-    public void setPhone(String Phone)
-    {
-        this.Phone=Phone;
+        return String.join(",", 
+                getID(),
+                getUsername(),
+                getPassword(),
+                getName(),
+                getPhone(),
+                getEmail(),
+                getRole()
+                
+                );
     }
 }
+    
+    

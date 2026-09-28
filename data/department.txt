@@ -1,0 +1,9 @@
+DepartmentID:DEP001
+DepartmentName:Cardiology
+Description:Heart and cardiovascular care
+DepartmentID:DEP002
+DepartmentName:Dermatology
+Description:Skin and allergy treatments
+DepartmentID:DEP003
+DepartmentName:Pediatrics
+Description:Medical care for infants and children
