@@ -17,12 +17,14 @@ public class ManagerDashboard extends javax.swing.JFrame {
      */
     public ManagerDashboard() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public ManagerDashboard(models.Manager currentManager) 
     {
         this.currentManager = currentManager;
         initComponents();
+        setLocationRelativeTo(null);
     }
     
 

@@ -10,3 +10,15 @@ RosterID:R003
 DoctorID:D002
 ShiftDate:28/09/2026
 ShiftType:Morning(05:00-12:00)
+RosterID:R004
+DoctorID:D001
+ShiftDate:29/09/2026
+ShiftType:Morning(05:00-12:00)
+RosterID:R005
+DoctorID:D001
+ShiftDate:29/09/2026
+ShiftType:Night(19:00-05:00)
+RosterID:R006
+DoctorID:D003
+ShiftDate:27/09/2926
+ShiftType:Morning(05:00-12:00)

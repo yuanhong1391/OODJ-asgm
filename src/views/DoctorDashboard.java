@@ -20,11 +20,13 @@ public class DoctorDashboard extends javax.swing.JFrame {
      */
     public DoctorDashboard() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public DoctorDashboard(models.Doctor doctor) {
     this.currentDoctor = doctor;
     initComponents();
+    setLocationRelativeTo(null);
     this.pack();
     
     lblHeaderDoctor.setText("Weicome back " + currentDoctor.getName() + "  ID: " + currentDoctor.getID());

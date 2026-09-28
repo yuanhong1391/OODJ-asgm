@@ -43,6 +43,8 @@ public class Doctor extends User{
         //create a specific id for every vital
         String vitalId = services.FileHelper.generateNextId("V","data/vitals.txt");
         String today = java.time.LocalDate.now().toString();
+        vitals = services.FileHelper.clean(vitals);
+        notes = services.FileHelper.clean(notes);
         
         //format of virtals.txt
         String record = String.join(",", vitalId, patientID, getID(), today, vitals, notes);
@@ -53,11 +55,13 @@ public class Doctor extends User{
     // Method issue digital medication prescriptions
     public void issuePrescription(String patientID, String medicine, String dosage)
     {
-        String prescriptionId = services.FileHelper.generateNextId("PR", "data/prescription.txt");
+        String prescriptionId = services.FileHelper.generateNextId("PR", "data/prescriptions.txt");
         String today = java.time.LocalDate.now().toString();
         String status = "Pending";
+        medicine = services.FileHelper.clean(medicine);
+        dosage = services.FileHelper.clean(dosage);
         
-        String record = String.join(",", prescriptionId, getID(), today ,medicine, dosage, status);
+        String record = String.join(",", prescriptionId, patientID, getID(), today ,medicine, dosage, status);
         
         services.FileHelper.appendLine("data/prescriptions.txt", record);
     }
@@ -69,6 +73,7 @@ public class Doctor extends User{
         String today = java.time.LocalDate.now().toString();
         String result = "none";
         String status = "Requested";
+        
         
         String record = String.join(",", testId, patientID, getID(), today, testType, result, status);
         services.FileHelper.appendLine("data/lab_tests.txt", record);

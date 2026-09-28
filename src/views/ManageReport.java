@@ -21,6 +21,7 @@ public class ManageReport extends javax.swing.JFrame {
      */
     public ManageReport() {
         initComponents();
+        setLocationRelativeTo(null);
         txtDepartment.setEditable(false);
         txtRoster.setEditable(false);
         txtDoctor.setEditable(false);

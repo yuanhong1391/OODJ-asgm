@@ -23,6 +23,7 @@ public class EditProfile extends javax.swing.JFrame {
      */
     public EditProfile() {
         initComponents();
+        setLocationRelativeTo(null);
         txtManagerID.setEditable(false);
         loadProfile();
     }
@@ -31,6 +32,7 @@ public class EditProfile extends javax.swing.JFrame {
     {
         this.currentManager = currentManager;
         initComponents();
+        setLocationRelativeTo(null);
         txtManagerID.setEditable(false);
         loadProfile();
         

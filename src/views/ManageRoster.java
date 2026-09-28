@@ -24,6 +24,7 @@ public class ManageRoster extends javax.swing.JFrame {
      */
     public ManageRoster() {
         initComponents();
+        setLocationRelativeTo(null);
         rosterList.setEditable(false);
         loadRoster();
     }

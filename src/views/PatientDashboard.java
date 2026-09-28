@@ -20,12 +20,14 @@ public class PatientDashboard extends javax.swing.JFrame {
      */
     public PatientDashboard() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public PatientDashboard(models.Patient patient) 
     {
         this.currentPatient = patient;
         initComponents();
+        setLocationRelativeTo(null);
         
         if (currentPatient != null) 
         {
@@ -46,13 +48,18 @@ public class PatientDashboard extends javax.swing.JFrame {
     private void loadDateToCbox() 
     {
         cboxAppDate.removeAllItems();
-        java.time.LocalDate date = java.time.LocalDate.now();
-        
-        for (int i = 0; i < 30; i++) 
+        if (cboxAppSelectDoc.getSelectedItem() == null) 
         {
-            cboxAppDate.addItem(date.toString());
-            date = date.plusDays(1);
+            return;
         }
+        
+        String docId = cboxAppSelectDoc.getSelectedItem().toString().split("-")[0].trim();
+        
+        for (String slot : services.FileHelper.getRosterSlots(docId))
+        {
+            cboxAppDate.addItem(slot);
+        }
+            
     }
     
     private void loadDoctorsToCbox() 
@@ -230,7 +237,7 @@ private int getRemainingSlots(String doctorId, String date)
         }
         
     }
-    int remaining = 8 - bookedCount;
+    int remaining = 3 - bookedCount;
     return remaining;
 }
 
@@ -248,12 +255,12 @@ private void updateSlotStatus()
     
     if (remaining > 0) 
     {
-        lblAppAvailable.setText("*Available (Remaining: " + remaining + "/8 slots");
+        lblAppAvailable.setText("*Available (Remaining: " + remaining + "/3 slots");
         lblAppAvailable.setForeground(Color.green);
     }
     else 
     {
-        lblAppAvailable.setText("*Fully Booked (0/8 slots left)");
+        lblAppAvailable.setText("*Fully Booked (0/3 slots left)");
         lblAppAvailable.setForeground(Color.red);
     }
 }
@@ -1118,7 +1125,7 @@ private void updateSlotStatus()
         int remaining = getRemainingSlots(doctorId, bookDate);
         if (remaining <= 0) 
         {
-            javax.swing.JOptionPane.showMessageDialog(this, "Sorry, this doctor is fully booked on " + bookDate + " (8/8)! Please select another date or doctor.", "Slot Unavailable", javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Sorry, this doctor is fully booked on " + bookDate + " (0/3)! Please select another date or doctor.", "Slot Unavailable", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -1165,6 +1172,7 @@ private void updateSlotStatus()
 
     private void cboxAppSelectDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAppSelectDocActionPerformed
         // TODO add your handling code here:
+        loadDateToCbox();
         updateSlotStatus();
     }//GEN-LAST:event_cboxAppSelectDocActionPerformed
 
@@ -1201,12 +1209,14 @@ private void updateSlotStatus()
         }
 
 
-        String[] availableDates = new String[30];
-        java.time.LocalDate date = java.time.LocalDate.now().plusDays(1);
-        for (int i = 0; i < 30; i++) {
-            availableDates[i] = date.toString();
-            date = date.plusDays(1);
+        List<String> rosterSlots = services.FileHelper.getRosterSlots(doctorId);
+        if (rosterSlots.isEmpty()) 
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, "This doctor has no upcoming roster.", "No Roster", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        String[] availableDates = rosterSlots.toArray(new String[0]);
 
 
         Object selectedNewDate = javax.swing.JOptionPane.showInputDialog(
@@ -1230,7 +1240,7 @@ private void updateSlotStatus()
         int remaining = getRemainingSlots(doctorId, newDate);
         if (remaining <= 0) {
             javax.swing.JOptionPane.showMessageDialog(this, 
-                "Sorry, the doctor is already fully booked on " + newDate + " (8/8)! Please choose another day.", 
+                "Sorry, the doctor is already fully booked on " + newDate + " (3/3)! Please choose another day.", 
                 "Date Unavailable", 
                 javax.swing.JOptionPane.WARNING_MESSAGE);
             return;

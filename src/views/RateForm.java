@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 public class RateForm extends EditorPanel {
     public RateForm() {
         initComponents();
+        
         setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 18, 18, 18));
     }
 

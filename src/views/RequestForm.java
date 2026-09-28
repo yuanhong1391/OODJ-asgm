@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 public class RequestForm extends EditorPanel {
     public RequestForm() {
         initComponents();
+        
         setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 18, 18, 18));
     }
 

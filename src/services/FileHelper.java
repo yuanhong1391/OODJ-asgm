@@ -65,13 +65,22 @@ public class FileHelper {
     
     public static String generateNextId(String prefix, String filePath) 
     {
-        //using readfile and .size to know currenly txt.file got how ,any case alr
         List<String> lines = readFile(filePath);
-        int nextNumber = lines.size() + 1;
-        
-        //%04d used makesure id at lease have 4, exp 0001
-        return String.format("%s%04d", prefix,nextNumber);
-    }
+            int max = 0;
+            for (String line : lines) {
+                String id = line.split(",")[0].trim();
+                if (id.toUpperCase().startsWith(prefix.toUpperCase())) {
+                    try {
+                        int n = Integer.parseInt(id.substring(prefix.length()));
+                        if (n > max) max = n;
+                    } catch (NumberFormatException e)
+                    {
+                        continue;
+                    }
+                }
+            }
+        return String.format("%s%04d", prefix, max + 1);
+    }        
     
     public static boolean writeFile(String filePath, List<String> lines) 
     {
@@ -114,6 +123,11 @@ public class FileHelper {
         return false;
     }
     
+    public static String clean(String s) {
+    if (s == null) return "";
+    return s.replace(",", ";").replace("\r", " ").replace("\n", " ").trim();
+}
+    
     public static String findNameBasedID(String Id, String role) {
     services.UserService userService = new services.UserService();
     List<models.User> users = userService.loadAllUsers();
@@ -125,5 +139,61 @@ public class FileHelper {
     }
     return null; // 
 }
+   public static List<String> getRosterSlots(String doctorId) 
+   {
+       List<String> result = new ArrayList<>();
+       java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+       
+       String currentDoctor = "";
+       String currentDate = "";
+       
+       for (String line : readFile("data/roster.txt")) 
+       {
+           if(line.startsWith("RosterID: ")) 
+           {
+               currentDoctor = "";
+               currentDate = "";
+           }
+           
+           else if (line.startsWith("DoctorID:")) 
+           {
+               currentDoctor = line.substring(9).trim();
+           }
+           
+           else if(line.startsWith("ShiftDate:")) 
+           {
+               try {
     
+               java.time.LocalDate d = java.time.LocalDate.parse(line.substring(10).trim(), fmt);
+               if (d.isBefore(java.time.LocalDate.now())) 
+               {
+                   currentDate = "";
+               }
+               
+               else 
+               {
+                   currentDate = d.toString();
+               }
+               
+           }catch (java.time.format.DateTimeParseException e) {currentDate = "";}
+       }
+           else if(line.startsWith("ShiftType:")) 
+           {
+               if (currentDoctor.equalsIgnoreCase(doctorId) && !currentDate.isEmpty()) {
+                String shift = line.substring(10).trim();   
+                int bracket = shift.indexOf("(");           
+                if (bracket > 0) {
+                    shift = shift.substring(0, bracket);    
+                }
+                String slot = currentDate + " " + shift;    
+                if (!result.contains(slot)) {              
+                    result.add(slot);
+                }
+           }
+       }
+    }
+       java.util.Collections.sort(result);
+       return result;
+    
+    }
 }

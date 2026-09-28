@@ -23,6 +23,7 @@ public class ManageDepartment extends javax.swing.JFrame {
     public ManageDepartment() 
     {
         initComponents();
+        setLocationRelativeTo(null);
         Departmentlist.setEditable(false);
         loadDepartments();
     }
