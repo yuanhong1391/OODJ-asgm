@@ -1,8 +1,10 @@
+package models;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package managementsystem;
+
 
 /**
  *
@@ -15,7 +17,7 @@ public class Roster
     private String shiftDate;
     private String shiftType;
     
-    public Roster(String roasterID,String doctorID,String shiftDate,String shiftType)
+    public Roster(String roawsterID,String doctorID,String shiftDate,String shiftType)
     {
         this.rosterID = rosterID;
         this.doctorID = doctorID;
