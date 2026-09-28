@@ -4,3 +4,4 @@ P001,john_doe,pass123,John Doe,011223344,john@gmail.com,Patient,O+,0119988776,As
 P002,alice_w,pass123,Alice Wong,0176655443,alice@gmail.com,Patient,A+,0171122334,None
 M001,manager1,pass123,Mr Tan Ah Teck,0123456789,tan@hospital.com,Manager
 D003,dr_tei,pass123,Dr. Tei,0123456789,tei@clinic.com,Doctor,Cardiology,Room-101
+A001,admin1,pass123,Admin One,0123456789,admin@hospital.com,Admin

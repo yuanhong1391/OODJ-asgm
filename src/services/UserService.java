@@ -15,6 +15,7 @@ import models.Doctor;
 import models.Patient;
 import models.User;
 import models.Manager;
+import models.AdminStaff;
 
 /**
  *
@@ -83,6 +84,11 @@ public class UserService {
             {
                 Manager mgr = new Manager(id, username, password, name, phone, email);
                 userList.add(mgr);
+            }
+            
+            else if(role.equalsIgnoreCase("Admin")) 
+            {
+                userList.add(new AdminStaff(id, username, password, name, phone, email));
             }
             
             

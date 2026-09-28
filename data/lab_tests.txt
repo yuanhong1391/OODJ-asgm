@@ -1,4 +1,4 @@
-T0001,P001,D001,2026-09-26,Chest X-Ray,none,Requested
+T0001,P001,D001,2026-09-26,Chest X-Ray,none,Scheduled
 T0002,P002,D001,2026-09-26,Blood Test (Full Blood Count),none,Allocated
 T0003,P001,D001,2026-09-25,Urine Analysis,Normal,Completed
 T0004,P002,D001,2026-09-24,MRI Scan (Brain / Spine),No acute bleeding,Completed

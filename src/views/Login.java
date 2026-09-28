@@ -181,6 +181,12 @@ public class Login extends javax.swing.JFrame {
                 new ManagerDashboard((models.Manager)matchedUser) .setVisible(true);
                 this.dispose();
             }
+            
+            else if (role.equalsIgnoreCase("Admin"))
+{
+                new AdminDashboard((models.AdminStaff) matchedUser).setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

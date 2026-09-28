@@ -27,7 +27,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     initComponents();
     this.pack();
     
-    lblHeaderDoctor.setText("Weicome back Dr. " + currentDoctor.getName() + "  ID: " + currentDoctor.getID());
+    lblHeaderDoctor.setText("Weicome back " + currentDoctor.getName() + "  ID: " + currentDoctor.getID());
     loadAppointments("All");
     loadLabRequests();
     loadProfile();
